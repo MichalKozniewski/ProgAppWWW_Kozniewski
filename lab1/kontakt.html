@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+    <head >
+        <meta charset="UTF-8">
+        <title>TechPunkt – Kontakt</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header class="kontener">
+            <h1>Sklep z elektroniką</h1>
+        </header>
+        <nav class="menu kontener">
+            <a href="index.html">Strona Główna</a>
+            <a href="kontakt.html" aria-current="page">Kontakt</a>
+            <a href="produkt.html">Produkt</a>
+        </nav>
+        <main class="kontener">
+            <p class="info-komunikat">
+                Formularz demonstracyjny. Dane pojawią się w adresie strony; zapytanie nie zostanie zapisane ani wysłane e-mailem.
+            </p>
+            <form action="kontakt.html" method="get">
+                <div class="pole">
+                    <label for="email">Adres email</label>
+                    <input type="email" name="email" required id="email" placeholder="np. nazwa@cos.com">
+                </div>
+                <div class="pole">
+                <label for="produkt">Wybierz produkt *</label>
+                    <select name="produkt" required id="produkt">
+                        <option value="">Wybierz produkt</option>
+                        <option value="klawiatura">HyperX Alloy Origins 2 65</option>
+                        <option value="sluchawki">Mad Dog GH800</option>
+                        <option value="mysz">Razer DeathAdder Essential</option>
+                    </select>
+                </div>
+                <div class="pole">
+                    <label for="ilosc">Podaj ilość 1-5</label>
+                    <input type="number" name="ilosc" required min="1" max="5" step="1" id="ilosc">
+                </div>
+                <div class="pole">
+                    <label for="wiadomosc">Wyślij wiadomosc 10-500</label>
+                    <textarea name="wiadomosc" required minlength="10" maxlength="500" id="wiadomosc"></textarea>
+                </div>
+                <div class="pole">
+                    <button type="submit">Sprawdź zapytanie</button>
+                </div>
+            </form> 
+        </main>
+        <footer class="kontener">
+            <p>&copy; TechPunkt</p>
+        </footer>
+
+    </body>
+</html>
