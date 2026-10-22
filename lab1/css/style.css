@@ -1,198 +1,51 @@
-/* ===== Zmienne ===== */
 :root {
-    --tlo: #f3f5f9;
-    --powierzchnia: #ffffff;
+    --tlo: #ffffff;
     --tekst: #1b2030;
-    --tekst-przygaszony: #4a5266;
     --akcent: #3338c9;
     --akcent-ciemny: #24289a;
-    --ciemny: #1b2030;
-    --ramka: #d5d9e4;
     --odstep: 1rem;
-    --promien: 8px;
 }
+ 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
+ 
 body {
     margin: 0;
     background: var(--tlo);
     color: var(--tekst);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    font-size: 1rem;
+    font-family: Arial, sans-serif;
     line-height: 1.6;
 }
+ 
 img {
-    display:block;
     max-width: 100%;
     height: auto;
 }
-
-h1,h2,h3 {
-    line-height: 1.25;
-    margin: 0 0 0.5rem;
-}
-h1{
-    font-size:  1.6rem;
-}
-h2{
-    font-size:  1.3rem;
-}
-h3{
-    font-size:  1.1rem;
-    margin-top: 1.5rem;
-}
-p{
-    margin: 0 0 var(--odstep);
-}
-a {
-    color: var(--akcent);
-    text-underline-offset: 3px;
-}
-a:hover {
-    color: var(--akcent-ciemny);
-    text-decoration-thickness: 2px;
-}
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    outline: 3px solid var(--akcent);
-    outline-offset: 3px;
-}
-.kontener{
-    width: 100%;
+ 
+.kontener {
     max-width: 1100px;
     margin-inline: auto;
     padding-inline: var(--odstep);
 }
-header.kontener{
-    padding-block: 1.25rem 0.75rem;
-}
-main.kontener{
-    padding-block: 1.5rem;
-}
-footer.kontener {
-    padding-block: 1.5rem;
-    color: var(--tekst-przygaszony);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--ramka);
-}
-footer p {
-    margin: 0;
-}
-.menu{
+ 
+.menu {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    padding-block: 0.5rem;
-    background: var(--ciemny);
+    gap: var(--odstep);
 }
-.menu a{
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: var(--promien);
-    color: var(--powierzchnia);
-    text-decoration: none;
-}
-.menu a:hover {
-    background: var(--akcent);
-    color: var(--powierzchnia);
-}
-
-.menu a[aria-current="page"] {
-    background: var(--powierzchnia);
-    color: var(--ciemny);
-    font-weight: 700;
-}
-.menu a:focus-visible{
-    outline: 3px solid #ffd23f;
-    outline-offset: 2px;
-}
-.katalog{
+ 
+.katalog {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--odstep);
 }
+ 
 .karta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
     padding: var(--odstep);
-    background: var(--powierzchnia);
-    border: 1px solid var(--ramka);
-    border-radius: var(--promien);
-}
-.karta h2{
-    margin: 0;
-}
-.karta img{
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: contain;
-    background: var(--powierzchnia);
-}
-.karta p{
-    margin: 0;
-}
-.cena {
-    margin-top: auto;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--tekst);
-}
-main > img{
-    margin-bottom: var(--odstep);
-}
-ul{
-    padding-left: 1.25rem;
-}
-.tabela-wrap{
-    overflow-x: auto;
-}
-table{
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--powierzchnia);
-    border-style: solid;
-}
-caption{
-    padding: 0.5rem 0;
-    font-weight: 700;
-    text-align: left;
-}
-th,
-td {
-    padding: 0.6rem 0.75rem;
-    border: 1px solid var(--ramka);
-    text-align: left;
-}
-thead th {
-    background: var(--ciemny);
-    color: var(--powierzchnia);
-}
-.info-komunikat {
-    padding: 0.75rem var(--odstep);
-    background: #fff4cc;
-    border-left: 4px solid #b38600;
-    border-radius: var(--promien);
-}
- 
-form {
-    max-width: 600px;
-}
- 
-.pole {
-    display: grid;
-    gap: 0.35rem;
-    margin-bottom: var(--odstep);
-}
- 
-label {
-    font-weight: 600;
+    border: 1px solid var(--tekst);
 }
  
 input,
@@ -200,51 +53,26 @@ select,
 textarea {
     width: 100%;
     max-width: 100%;
-    padding: 0.6rem 0.75rem;
-    font: inherit;
-    color: var(--tekst);
-    background: var(--powierzchnia);
-    border: 1px solid #8a92a6;
-    border-radius: var(--promien);
 }
  
-textarea {
-    resize: vertical;
+a {
+    color: var(--akcent);
 }
  
-button {
-    padding: 0.7rem 1.5rem;
-    font: inherit;
-    font-weight: 700;
-    color: var(--powierzchnia);
-    background: var(--akcent-ciemny);
-    border: 2px solid var(--akcent);
-    border-radius: var(--promien);
-    cursor: pointer;
-}
- 
+a:hover,
 button:hover {
-    background: var(--akcent-ciemny);
-    border-color: var(--akcent-ciemny);
+    color: var(--akcent-ciemny);
+    text-decoration-thickness: 2px;
 }
  
+a:focus-visible,
 button:focus-visible {
-    outline: 3px solid var(--ciemny);
+    outline: 3px solid var(--akcent);
     outline-offset: 3px;
 }
+ 
 @media (min-width: 768px) {
-    .kontener {
-        padding-inline: 2rem;
+    .katalog {
+        grid-template-columns: repeat(3, 1fr);
     }
-    h1 {
-        font-size: 2.2rem;
-    }
-    h2 {
-        font-size: 1.5rem;
-    }
-    .katalog{
-        grid-template-columns: repeat(3,1fr);
-        gap: 2rem;
-    }
-
 }
