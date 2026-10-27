@@ -24,7 +24,7 @@
             <p class="info-komunikat">
                 Formularz demonstracyjny. Dane pojawią się w adresie strony; zapytanie nie zostanie zapisane ani wysłane e-mailem.
             </p>
-            <form action="kontakt.html" method="get">
+            <form action="kontakt.html" method="get" id="formularz-kontakt">
                 <div class="pole">
                     <label for="email">Adres email</label>
                     <input type="email" name="email" required id="email" placeholder="np. nazwa@cos.com">
@@ -38,7 +38,7 @@
                         <option value="mysz">Razer DeathAdder Essential</option>
                     </select>
                 </div>
-                <div class="pole">
+                <div class="pole" aria-live="polite">
                     <label for="ilosc">Podaj ilość 1-5</label>
                     <input type="number" name="ilosc" required min="1" max="5" step="1" id="ilosc">
                 </div>
@@ -46,10 +46,12 @@
                     <label for="wiadomosc">Wyślij wiadomosc 10-500</label>
                     <textarea name="wiadomosc" required minlength="10" maxlength="500" id="wiadomosc"></textarea>
                 </div>
+                <div class="error" hidden aria-describedby="textarea"></div>
                 <div class="pole">
                     <button type="submit">Sprawdź zapytanie</button>
                 </div>
             </form> 
+            <div class="podsumowanie" hidden></div>
         </main>
         <footer class="kontener">
             <p>&copy; TechPunkt</p>

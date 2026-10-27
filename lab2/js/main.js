@@ -120,5 +120,27 @@ function inicjalizujWyszukiwarke() {
 
   updateSearch();
 }
+
+const PRODUKTY = [
+  { id: "klawiatura", nazwa: "HyperX Alloy Origins 2 65", cenaGrosze: 33900 },
+  { id: "mysz", nazwa: "Razer DeathAdder Essential", cenaGrosze: 9900 },
+  { id: "sluchawki", nazwa: "Mad Dog GH800", cenaGrosze: 24900 }
+];
+
+function obliczWartoscGrosze(cenaGrosze, ilosc){
+  return cenaGrosze * ilosc
+}
+const priceFormatter = new Intl.NumberFormat("pl-PL",{style: "currency", currency: "PLN"})
+function inicjalizujFormularz(){
+  const form = document.getElementById("formularz-kontakt");
+  const selectProdukt = document.getElementById("produkt");
+  const inputIlosc = document.getElementById("ilosc");
+  const textareaWiadomosc = document.getElementById("wiadomosc");
+  const bladWiadomosci = document.getElementById("blad-wiadomosci");
+  const podsumowanieDiv = document.getElementById("podsumowanie");
+  if (!form || !selectProdukt || !inputIlosc || !textareaWiadomosc || !bladWiadomosci || !podsumowanieDiv) return;
+}
+
+
 inicjalizujWyszukiwarke();
 inicjalizujZegar();
