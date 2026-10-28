@@ -11,15 +11,25 @@ function inicjalizujTrybCiemny() {
   const KLUCZ_STORAGE = "wybrany_motyw";
   const dozwoloneMotywy = ["light", "dark"];
 
-  let zapisanyMotyw = localStorage.getItem(KLUCZ_STORAGE);
-  if (!dozwoloneMotywy.includes(zapisanyMotyw)) {
-    zapisanyMotyw = "light";
+  let zapisanyMotyw = "light";
+
+  try {
+    const wczytanaWartosc = localStorage.getItem(KLUCZ_STORAGE);
+    if (dozwoloneMotywy.includes(wczytanaWartosc)) {
+      zapisanyMotyw = wczytanaWartosc;
+    }
+  } catch (error) {
+    console.warn("Brak dostępu do localStorage (odczyt):", error);
   }
 
   function ustawMotyw(motyw) {
     document.documentElement.setAttribute("data-theme", motyw);
     przyciskMotywu.setAttribute("aria-pressed", motyw === "dark" ? "true" : "false");
-    localStorage.setItem(KLUCZ_STORAGE, motyw);
+    try {
+      localStorage.setItem(KLUCZ_STORAGE, motyw);
+    } catch (error) {
+      console.warn("Brak dostępu do localStorage (zapis):", error);
+    }
   }
 
   ustawMotyw(zapisanyMotyw);
@@ -233,7 +243,6 @@ function inicjalizujFormularz(){
   
   
 }
-
 inicjalizujFormularz();
 inicjalizujWyszukiwarke();
 inicjalizujZegar();
