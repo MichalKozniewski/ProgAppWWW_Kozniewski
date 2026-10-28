@@ -136,11 +136,104 @@ function inicjalizujFormularz(){
   const selectProdukt = document.getElementById("produkt");
   const inputIlosc = document.getElementById("ilosc");
   const textareaWiadomosc = document.getElementById("wiadomosc");
-  const bladWiadomosci = document.getElementById("blad-wiadomosci");
-  const podsumowanieDiv = document.getElementById("podsumowanie");
-  if (!form || !selectProdukt || !inputIlosc || !textareaWiadomosc || !bladWiadomosci || !podsumowanieDiv) return;
+  const err = document.getElementById("error");
+  const podsumowanie = document.getElementById("podsumowanie");
+  const wycena = document.getElementById("wycena");
+  if (!form || !selectProdukt || !inputIlosc || !textareaWiadomosc || !err || !podsumowanie || !wycena) return;
+  function pobierzDane() {
+    const idTekst = selectProdukt.value; 
+    const iloscTekst = inputIlosc.value;  
+    const ilosc = Number(iloscTekst);    
+    const produkt = PRODUKTY.find((p) => String(p.id) === idTekst);
+
+
+    const poprawne =
+      Boolean(produkt) &&
+      iloscTekst.trim() !== '' &&
+      Number.isInteger(ilosc) &&
+      ilosc >= 1 &&
+      ilosc <= 5;
+
+    return { produkt, ilosc, poprawne };
+  }
+  function pokazWycene(){
+    const x = pobierzDane();
+    if (!x.poprawne){
+      wycena.textContent = "Wybierz produkt i podaj ilość od 1 do 5";
+      return;
+    }
+    wycena.textContent = priceFormatter.format(obliczWartoscGrosze(x.produkt.cenaGrosze,x.ilosc)/100);
+      
+  }
+  function ukryjPodsumowanie(){
+    podsumowanie.hidden = true;
+    podsumowanie.textContent = "";
+  }
+  function ukryjBlad(){
+    err.hidden = true;
+    err.textContent = "";
+    textareaWiadomosc.removeAttribute("aria-invalid");
+  }
+  function pokazPodsumowanie(dane, wiadomosc){
+    podsumowanie.textContent = "";
+    const waroscZl = obliczWartoscGrosze(dane.produkt.cenaGrosze, dane.ilosc) /100;
+    const sformatowane = priceFormatter.format(waroscZl)
+    const linie = [
+      `Wybrany produkt: ${dane.produkt.nazwa || dane.produkt.id}`,
+      `Ilość: ${dane.ilosc}`,
+      `Wartość zamówienia: ${sformatowane}`,
+      `Treść wiadomości: ${wiadomosc}`
+    ];
+    linie.forEach((tekst) => {
+      const p = document.createElement("p");
+      p.textContent = tekst;
+      podsumowanie.appendChild(p);
+    });
+    podsumowanie.hidden = false;
+  }
+  function obsluzZmianeWyceny(){
+    pokazWycene();
+    ukryjPodsumowanie();
+  }
+  selectProdukt.addEventListener("change", obsluzZmianeWyceny);
+  inputIlosc.addEventListener("input", obsluzZmianeWyceny);
+  textareaWiadomosc.addEventListener("input", () => {
+    if (textareaWiadomosc.value.trim().length >= 10) {
+      ukryjBlad();
+    }
+    ukryjPodsumowanie();
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    
+    const dane = pobierzDane();
+    const wiadomosc = textareaWiadomosc.value.trim();
+
+    
+    if (!dane.poprawne) {
+      pokazWycene();
+      ukryjPodsumowanie();
+      return;
+    }
+
+    if (wiadomosc.length < 10) {
+      err.textContent = "Wiadomość musi zawierać co najmniej 10 znaków.";
+      err.hidden = false;
+      textareaWiadomosc.setAttribute("aria-invalid", "true");
+      textareaWiadomosc.focus();
+      ukryjPodsumowanie();
+      return;
+    }
+    ukryjBlad();
+    pokazPodsumowanie(dane, wiadomosc);
+  });
+  pokazWycene();
+  
+  
 }
 
-
+inicjalizujFormularz();
 inicjalizujWyszukiwarke();
 inicjalizujZegar();
