@@ -10,7 +10,8 @@
     --tekst: #ffffff;
     --akcent: #5257e6;
     --akcent-ciemny: #7377f0;
-}
+    --odstep: 1rem;
+}   
 
 #theme-toggle {
     height: 2.5rem;
