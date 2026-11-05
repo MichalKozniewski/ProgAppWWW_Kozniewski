@@ -165,7 +165,7 @@ ON CLICK $checkBtn:
 - **Co zrobiłem:** W Firefoksie ustawiłem w about:config `ui.prefersReducedMotion = 1` i odświeżyłem stronę (F5). Sprawdziłem w konsoli wartość `$.fx.off` (zwróciło `true`), po czym przeklikałem przyciski A, B i C (w tym 6. kliknięcie w C) oraz sprawdziłem atrybuty `aria-pressed`.
 - **Oczekiwano:** Zmiany rozmiaru przycisków zachodzą natychmiast. Atrybuty `aria-pressed`, licznik kroków oraz blokada maksymalnego rozmiaru działają bez zmian.
 - **Wynik:** Zmiana rozmiaru następuje natychmiastowo bez puszczania animacji powiększania/zmniejszania. Atrybut `aria-pressed` przełącza się poprawnie (true/false) w Przycisku A, licznik C nalicza kroki do 5, a 6. kliknięcie nie powiększa obiektu. Przy `$.fx.off = true` warunek `.is(":animated")` nie blokuje kliknięć, więc limit zapewnia `krok >= maxKroki`.
-- **Wniosek:** Wyłączenie animacji w przeglądarce skutkuje natychmiastową zmianą wymiarów, nie naruszając logiki stanów, atrybutów dostępności ani limitów.
+- **Wniosek:** Wyłączenie animacji w przeglądarce skutkuje natychmiastową zmianą wymiarów.
 
 ## Testy AJAX
 
