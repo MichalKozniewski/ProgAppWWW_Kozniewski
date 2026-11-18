@@ -1,0 +1,40 @@
+
+            <p class="info-komunikat">
+                Podgląd lokalny. Formularz nie wysyła wiadomości.
+            </p>
+            <form action="index.php?idp=kontakt" method="get" id="formularz-kontakt">
+                
+                <div class="pole">
+                    <label for="email">Adres email</label>
+                    <input type="email" name="email" required id="email" placeholder="np. nazwa@cos.com">
+                </div>
+                
+                <div class="pole">
+                <label for="produkt">Wybierz produkt *</label>
+                    <select name="produkt" required id="produkt">
+                        <option value="">Wybierz produkt</option>
+                        <option value="klawiatura">HyperX Alloy Origins 2 65</option>
+                        <option value="sluchawki">Mad Dog GH800</option>
+                        <option value="mysz">Razer DeathAdder Essential</option>
+                    </select>
+                </div>
+                
+                <div class="pole">
+                    <label for="ilosc">Podaj ilość 1-5</label>
+                    <input type="number" name="ilosc" required min="1" max="5" step="1" id="ilosc">
+                </div>
+                
+                <div id="wycena" aria-live="polite"></div> 
+
+                <div class="pole">
+                    <label for="wiadomosc">Wyślij wiadomosc 10-500</label>
+                    <textarea name="wiadomosc" required minlength="10" maxlength="500" id="wiadomosc" aria-describedby="error"></textarea>
+                </div>
+                
+                <div id="error" hidden role="alert"></div>
+                
+                <div class="pole">
+                    <button type="submit">Sprawdź zapytanie</button>
+                </div>
+            </form> 
+            <div id="podsumowanie" hidden></div>
